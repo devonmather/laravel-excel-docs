@@ -150,6 +150,15 @@ In `config/excel.php`
 ],
 ```
 
+In the above use case when using queued chunk reading it's possible that you will need to force deletion of the local file after each queued chunk is processed. In order to do so set the following to true, as below.
+
+```php
+'temporary_files' => [
+    'force_resync_remote' => true,
+],
+```
+
+
 ## Notes
 :::warning
 You currently cannot queue `xls` imports. PhpSpreadsheet's Xls reader contains some non-utf8 characters, which makes it impossible to queue.
